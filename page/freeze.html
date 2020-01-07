@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{foo}}</p>
+        <button v-on:click="foo = 'baz'">Change it</button>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    var obj = {
+        foo:'bar'
+    }
+    //将对象设置为只读
+    //Object.freeze(obj)
+    var vm = new Vue({
+        el:'#app',
+        data:obj,
+        //创建vue实例之前调用
+        beforeCreated: function (){
+
+        },
+        //创建vue实例时调用
+        created:function () {
+            console.log("创建vue实例")
+        },
+        //绑定元素时调用
+        mounted: function () {
+          console.log("???mounted")
+        },
+        //修改data时调用
+        beforeUpdate: function () {
+            console.log("before update")
+        },
+        //虚拟dom重新渲染并应用更新时调用
+        update: function () {
+            console.log("update")
+        },
+        //vue实例销毁之前调用
+        beforeDestroy: function () {
+            console.log("before destroy")
+        },
+        //vue实例销毁之后调用
+        destroy: function () {
+            console.log("destroy")
+        }
+    })
+    console.log(vm.$data == obj)
+    console.log(vm.$el == document.getElementById("app"))
+    //在foo值改变时调用
+    vm.$watch('foo',function (newValue, oldValue) {
+        console.log(oldValue)
+    })
+</script>
+</html>
