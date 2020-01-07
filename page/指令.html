@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <ul v-text="text">
+        </ul>
+    </div>
+</body>
+<script src="../js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            text:'<li>哈哈哈哈哈</li><li>哈哈哈哈哈</li><li>哈哈哈哈哈</li><li>哈哈哈哈哈</li><li>哈哈哈哈哈</li>'
+        }
+    })
+</script>
+</html>
+<!--
+v-html:能输出html标签
+v-text:不管内容是什么都以字符串形式输出
+-->
